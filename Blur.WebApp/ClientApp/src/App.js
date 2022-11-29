@@ -1,22 +1,9 @@
-import React, { Component } from 'react';
-import { Route, Routes } from 'react-router-dom';
-import AppRoutes from './AppRoutes';
-import { Layout } from './components/Layout';
-import './custom.css';
-
-export default class App extends Component {
-  static displayName = App.name;
-
-  render() {
+export default function App() {
     return (
-      <Layout>
-        <Routes>
-          {AppRoutes.map((route, index) => {
-            const { element, ...rest } = route;
-            return <Route key={index} {...rest} element={element} />;
-          })}
-        </Routes>
-      </Layout>
-    );
-  }
+        <div className="bg-gray-400">
+            <h1 className="text-3xl font-bold underline">
+                Hello world!
+            </h1>
+        </div>        
+    )
 }
