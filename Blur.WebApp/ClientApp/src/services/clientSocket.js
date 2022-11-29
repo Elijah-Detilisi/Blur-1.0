@@ -1,31 +1,42 @@
 ﻿class ClientSocket {
     //fields
-    socketService = "/Echo";
-    socketUri = "ws://127.0.0.1:5000" + socketService;
-    clientSocket = new WebSocket(socketUri);
+    socket = null;
+    serverUri = "ws://127.0.0.1:5000";
 
-    //methods
-    this.socket.onopen = function (e) {
-        alert("[open] Connection established");
-        alert("Sending to server");
-        socket.send("My name is John");
-    };
+    //constructor
+    constructor(socktetService) {
+        this.serverUri = this.serverUri + `/${socktetService}`;
+        this.socket = new WebSocket(this.serverUri);
+    }
 
-    this.socket.onmessage = function (event) {
-        alert(`[message] Data received from server: ${event.data}`);
-    };
+    //helper methods
+    sendTextData(textData) {
+        const msg = {
+            type: "message",
+            text: textData,
+            date: Date.now()
+        }
 
-    this.socket.onclose = function (event) {
+        this.socket.send(JSON.stringify(msg));
+    }
+
+    //handler methods
+    OnError(error) {
+        alert(`[error]: ${error.data}`);
+    }
+    OnMessage(event) {
+        alert(`Data received from server: ${event.data}`);
+    }
+    OnOpen(event) {
+        alert("Connected to server: " + event);
+        sendTextData("Good bye cruel world!")
+        //socket.send("Good bye cruel world!");
+    }
+    OnClose(event) {
         if (event.wasClean) {
             alert(`[close] Connection closed cleanly, code=${event.code} reason=${event.reason}`);
         } else {
-            // e.g. server process killed or network down
-            // event.code is usually 1006 in this case
             alert('[close] Connection died');
         }
-    };
-
-    this.socket.onerror = function (error) {
-        alert(`[error]`);
-    };
+    }
 }
