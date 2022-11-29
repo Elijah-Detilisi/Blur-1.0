@@ -6,12 +6,12 @@ namespace Blur.UnitTest
     public class SocketServerTest
     {
         #region fields
-        private SocketServer_ socketServer;
+        private SocketServer socketServer;
         #endregion
 
         public SocketServerTest()
         {
-            socketServer = new SocketServer_();
+            socketServer = new SocketServer();
         }
 
         public void LaunchTest()

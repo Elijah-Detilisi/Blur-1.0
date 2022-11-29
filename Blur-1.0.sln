@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blur.WebSocket", "Blur.WebS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blur.UnitTest", "Blur.UnitTest\Blur.UnitTest.csproj", "{34032C6F-3845-41B5-830D-BB93B3C97184}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blur.WebApp", "Blur.WebApp\Blur.WebApp.csproj", "{C3055BFE-AD25-4405-8CF5-B046A478970C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{34032C6F-3845-41B5-830D-BB93B3C97184}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{34032C6F-3845-41B5-830D-BB93B3C97184}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{34032C6F-3845-41B5-830D-BB93B3C97184}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3055BFE-AD25-4405-8CF5-B046A478970C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3055BFE-AD25-4405-8CF5-B046A478970C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3055BFE-AD25-4405-8CF5-B046A478970C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3055BFE-AD25-4405-8CF5-B046A478970C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

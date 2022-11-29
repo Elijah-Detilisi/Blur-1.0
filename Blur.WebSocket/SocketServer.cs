@@ -4,7 +4,7 @@ using WebSocketSharp.Server;
 
 namespace Blur.WebSocket
 {
-    public class SocketServer_
+    public class SocketServer
     {
 
         #region class fields
@@ -12,7 +12,7 @@ namespace Blur.WebSocket
         private readonly WebSocketServer _socketServer;
         #endregion
 
-        public SocketServer_()
+        public SocketServer()
         {
             _webSocketUri = "ws://127.0.0.1:5000";
             _socketServer = new WebSocketServer(_webSocketUri);
