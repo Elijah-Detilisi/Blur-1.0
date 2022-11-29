@@ -26,35 +26,36 @@ namespace Blur.WebSocket
         public void StartServer()
         {
             Initialize();
+            Console.Beep();
+            Console.WriteLine($"Server Socket running at: {_webSocketUri}");
+
             _socketServer.Start();
         }
 
         public void StopServer()
         {
             Console.Beep();
-            Console.WriteLine($"Server Socket shutting donw ...");
+            Console.WriteLine($"Server Socket shutting down ...");
             _socketServer.Stop();
         }
 
         #region helper entities
         private class EchoService : WebSocketBehavior
         {
+            #pragma warning disable CA1416 // Validate platform compatibility
             protected override void OnOpen()
             {
-                Console.Beep();
+                Console.Beep(frequency: 277, duration: 200);
                 Console.WriteLine($"Server Socket running at address ...");
             }
             protected override void OnMessage(MessageEventArgs e)
             {
-                #pragma warning disable CA1416 // Validate platform compatibility
-                
                 Console.Beep(frequency: 277, duration: 200);
                 Console.WriteLine($"Message recieved: {e.Data}");
 
                 Sessions.Broadcast($"Echo message from server: {e.Data}");
-
-                #pragma warning restore CA1416 // Validate platform compatibility
             }
+            #pragma warning restore CA1416 // Validate platform compatibility
         }
         #endregion
 
