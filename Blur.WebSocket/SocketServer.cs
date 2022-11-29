@@ -46,7 +46,7 @@ namespace Blur.WebSocket
             protected override void OnOpen()
             {
                 Console.Beep(frequency: 277, duration: 200);
-                Console.WriteLine($"Server Socket running at address ...");
+                Console.WriteLine($"Cleint connect to Echo service");
             }
             protected override void OnMessage(MessageEventArgs e)
             {

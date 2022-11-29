@@ -1,42 +1,52 @@
-﻿class ClientSocket {
-    //fields
-    socket = null;
-    serverUri = "ws://127.0.0.1:5000";
-
+﻿export default class ClientSocket {
     //constructor
     constructor(socktetService) {
-        this.serverUri = this.serverUri + `/${socktetService}`;
+        this.serverUri = "ws://127.0.0.1:5000/" + socktetService;
         this.socket = new WebSocket(this.serverUri);
+    }
+    
+    initialzeClient() {
+        this.socket.onopen = this._OnOpen_;
+        this.socket.onclose = this._OnClose_;
+        this.socket.onerror = this._OnError_;
+        this.socket.onmessage = this._OnMessage_;
     }
 
     //helper methods
     sendTextData(textData) {
-        const msg = {
-            type: "message",
-            text: textData,
-            date: Date.now()
+        try {
+            const msg = {
+                type: "message",
+                text: textData,
+                date: Date.now()
+            }
+            this.socket.send(JSON.stringify(msg));
         }
-
-        this.socket.send(JSON.stringify(msg));
+        catch (error) {
+            alert(`Failed to send message: ${error}`);
+        }
+        
     }
 
     //handler methods
-    OnError(error) {
+    _OnError_(error) {
         alert(`[error]: ${error.data}`);
     }
-    OnMessage(event) {
+    _OnMessage_(event) {
         alert(`Data received from server: ${event.data}`);
     }
-    OnOpen(event) {
+    _OnOpen_(event) {
         alert("Connected to server: " + event);
-        sendTextData("Good bye cruel world!")
-        //socket.send("Good bye cruel world!");
+        this.sendTextData("My name is John");
+        alert("Message sent!");
     }
-    OnClose(event) {
+    _OnClose_(event) {
         if (event.wasClean) {
             alert(`[close] Connection closed cleanly, code=${event.code} reason=${event.reason}`);
         } else {
             alert('[close] Connection died');
         }
     }
+
+
 }
