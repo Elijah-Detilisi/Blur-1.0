@@ -1,7 +1,7 @@
 //indepencies
-//import ClientSocket from "./services/clientSocket";
 import React, { useState, useCallback, useEffect } from 'react';
 import useWebSocket, { ReadyState } from 'react-use-websocket';
+import "./services/clientWebSocket";
 
 export default function App() {
 
