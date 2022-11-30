@@ -1,7 +1,6 @@
 ﻿//indepencies
-import useWebSocket, { ReadyState } from 'react-use-websocket';
 import React, { useEffect } from 'react';
-
+import useWebSocket, { ReadyState } from 'react-use-websocket';
 
 export default function ClientWebSocket() {
     //fields
@@ -24,6 +23,10 @@ export default function ClientWebSocket() {
     }
     function getLatestData() {
         return lastJsonMessage;
+    }
+
+    function getSocketStatus() {
+        return readyState
     }
 
     //handler methods
@@ -52,7 +55,6 @@ export default function ClientWebSocket() {
                 getWebSocket().onerror = _OnError_;
                 getWebSocket().onmessage = _OnMessage_;
             }
-
             initialzeClient();
         }, []
     );
