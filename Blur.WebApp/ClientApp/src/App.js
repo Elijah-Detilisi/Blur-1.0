@@ -1,7 +1,7 @@
 //indepencies
 import React, { useState, useCallback, useEffect } from 'react';
 import useWebSocket, { ReadyState } from 'react-use-websocket';
-import "./services/clientWebSocket";
+import ClientWebSocket from "./services/clientWebSocket1";
 
 export default function App() {
 
@@ -12,9 +12,12 @@ export default function App() {
     const { sendMessage, lastMessage, readyState } = useWebSocket(socketUrl);
 
     useEffect(() => {
+        ClientWebSocket().initialzeClient();
         if (lastMessage !== null) {
             setMessageHistory((prev) => prev.concat(lastMessage));
         }
+        //ClientWebSocket.sendData("Hello");
+
     }, [lastMessage, setMessageHistory]);
 
     const handleClickChangeSocketUrl = useCallback(

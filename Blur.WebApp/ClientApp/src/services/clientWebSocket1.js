@@ -47,14 +47,15 @@ export default function ClientWebSocket() {
     }
 
     //initializer 
+    function initialzeClient() {
+        getWebSocket().onopen = _OnOpen_;
+        getWebSocket().onclose = _OnClose_;
+        //getWebSocket().onerror = _OnError_;
+        getWebSocket().onmessage = _OnMessage_;
+    }
+
     useEffect(
-        () => {
-            function initialzeClient() {
-                getWebSocket().onopen = _OnOpen_;
-                getWebSocket().onclose = _OnClose_;
-                getWebSocket().onerror = _OnError_;
-                getWebSocket().onmessage = _OnMessage_;
-            }
+        () => {        
             initialzeClient();
         }, []
     );
